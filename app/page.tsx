@@ -108,18 +108,21 @@ const bonuses = [
 
 const testimonials = [
   {
-    n: 'Ana Paula R.',
-    r: 'Madre de un niño de 9 años',
+    n: 'María Fernanda G.',
+    r: 'Madre mexicana de un niño de 9 años',
+    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ana%20Paula%20R.-pcjNOrS09UoWUjYob8oeknFQE55oVd.webp',
     q: 'Mi hijo siempre hacía preguntas difíciles y yo no sabía qué responder. Este material no me dio respuestas hechas, me enseñó a conversar mejor con mi hijo. Hoy él puede explicar por qué cree.',
   },
   {
-    n: 'Ricardo M.',
-    r: 'Padre de un niño de 11 años',
+    n: 'Carlos Andrés M.',
+    r: 'Padre colombiano de un niño de 11 años',
+    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ricardo%20M.-Pt2uNr5s3NThsi47jYnO1SqIiJFnBj.webp',
     q: 'Me di cuenta de que le estaba enseñando a mi hijo a repetir frases, no a pensar. Este recorrido me ayudó a corregir eso. Vi a mi hijo volverse más seguro al hablar de la fe sin ponerse a la defensiva.',
   },
   {
-    n: 'Juliana S.',
-    r: 'Madre soltera',
+    n: 'Valentina R.',
+    r: 'Madre argentina y emprendedora',
+    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Juliana%20S.-iLLpslFDJQx5WZzIAV98I1RVsfJ6rS.webp',
     q: 'Siempre tuve miedo de las dudas de mi hija. Pensaba que se estaba alejando. Hoy entiendo que las preguntas son parte del crecimiento. El material trajo más calma y profundidad.',
   },
 ]
@@ -409,7 +412,7 @@ export default function Page() {
               ))}
             </ul>
             <div className="mt-8">
-              <p className="text-sm text-muted-foreground line-through">de US$ 19,90 por:</p>
+              <p className="text-sm text-muted-foreground line-through">de US$ 39,90 por:</p>
               <p className="text-5xl font-extrabold text-foreground">US$ 9,90</p>
               <p className="text-sm text-muted-foreground">pago único</p>
               <p className="mt-2 inline-block rounded-full bg-success/10 px-3 py-1 text-xs font-bold text-success">
@@ -451,7 +454,7 @@ export default function Page() {
               ))}
             </ul>
             <div className="mt-8">
-              <p className="text-sm text-muted-foreground line-through">de US$ 29,90 por:</p>
+              <p className="text-sm text-muted-foreground line-through">de US$ 39,90 por:</p>
               <p className="text-5xl font-extrabold text-foreground">US$ 19,90</p>
               <p className="text-sm text-muted-foreground">pago único</p>
               <p className="mt-2 inline-block rounded-full bg-success/10 px-3 py-1 text-xs font-bold text-success">
@@ -497,6 +500,19 @@ export default function Page() {
         <div className="mx-auto mt-10 grid max-w-6xl gap-5 lg:grid-cols-3">
           {testimonials.map((t) => (
             <div key={t.n} className="flex flex-col rounded-2xl bg-card p-6 shadow-card">
+              <div className="mb-4 flex items-center gap-3">
+                <Image
+                  src={t.img}
+                  alt={`Foto de ${t.n}`}
+                  width={56}
+                  height={56}
+                  className="size-14 rounded-full object-cover ring-2 ring-accent/30"
+                />
+                <div>
+                  <p className="text-sm font-bold text-foreground">{t.n}</p>
+                  <p className="text-xs text-muted-foreground">{t.r}</p>
+                </div>
+              </div>
               <div className="mb-3 flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-accent text-accent" />
@@ -504,8 +520,7 @@ export default function Page() {
               </div>
               <p className="text-sm leading-relaxed text-foreground/90">&quot;{t.q}&quot;</p>
               <div className="mt-5 border-t border-border pt-4">
-                <p className="text-sm font-bold text-foreground">{t.n}</p>
-                <p className="text-xs text-muted-foreground">{t.r}</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Testimonio verificado</p>
               </div>
             </div>
           ))}
