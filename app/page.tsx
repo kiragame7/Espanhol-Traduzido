@@ -29,6 +29,19 @@ const themes = [
   { src: '/assets/pecado.webp', alt: 'Pecado' },
 ]
 
+const providedImages = {
+  worksheets:
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Translating_image_text_to_Spanish_202608160050-5riPSiW0F50VJ6QWZuSufIob0Glosc.jpeg',
+  transition:
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Translate_image_text_to_Spanish_202608160048-QcQrZpQmodkvzSEd2KhsU5nSEM1DZk.webp',
+  commonMistakes:
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Translate_image_text_to_Spanish_202608160046-_1_-ArKxLCSMEmckWrgI4foLYuiVNcHOJA.webp',
+  collection:
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/mockup-1-cMxFhTDgCaYH6uPxvb5a0QJCDfVxU8.webp',
+  worksheetsWebp:
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Translating_image_text_to_Spanish_202608160050-qsy5TW8iyiWS2cQaylQFEhLsdS6fcj.webp',
+}
+
 const materialFeatures = [
   { icon: BookOpen, title: '13 Libros Digitales', text: 'Recorrido completo de 52 semanas' },
   { icon: Smartphone, title: 'Acceso', text: 'Celular, tablet o computadora' },
@@ -87,13 +100,13 @@ const bonuses = [
   },
   {
     n: 2,
-    img: '/assets/bonus-2.webp',
+    img: providedImages.commonMistakes,
     title: 'Manual de Errores Comunes que Debilitan la Fe Infantil',
     text: 'Actitudes comunes, pero perjudiciales, que muchos padres cometen sin darse cuenta, y cómo corregirlas para proteger el desarrollo de la fe.',
   },
   {
     n: 3,
-    img: '/assets/bonus-3.webp',
+    img: providedImages.transition,
     title: 'Guía de Transición: De los 14 a los 18 Años',
     text: 'Cómo apoyar a tus hijos en los cambios cognitivos y emocionales de la adolescencia final, sin control excesivo, miedo o presión.',
   },
@@ -157,7 +170,7 @@ export default function Page() {
           <br className="hidden md:block" /> antes de que sea demasiado tarde.
         </h1>
         <Image
-          src="/assets/mockup-1.webp"
+          src={providedImages.collection}
           alt="Colección de ebooks Descubriendo el Porqué de la Fe"
           width={720}
           height={720}
@@ -190,7 +203,7 @@ export default function Page() {
           </h2>
           <div className="flex justify-center md:justify-end">
             <Image
-              src="/assets/folhas-mockup.webp"
+              src={providedImages.worksheetsWebp}
               alt="Maqueta de las hojas de actividades"
               width={480}
               height={480}
@@ -310,7 +323,7 @@ export default function Page() {
           </h2>
           <p className="mt-2 text-muted-foreground">52 semanas de teología sistemática para niños.</p>
           <Image
-            src="/assets/pacote-completo-oferta.webp"
+            src={providedImages.worksheets}
             alt="Paquete completo de la serie Descubriendo el Porqué de la Fe"
             width={480}
             height={480}
@@ -381,7 +394,7 @@ export default function Page() {
               Serie completa &quot;Descubriendo el Porqué de la Fe&quot;
             </p>
             <Image
-              src="/assets/mockup-1.webp"
+              src={providedImages.collection}
               alt="Maqueta del Plan Básico"
               width={320}
               height={288}
