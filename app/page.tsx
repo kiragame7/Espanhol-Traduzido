@@ -131,12 +131,18 @@ const completePlanFeatures = [
   'Bono #3 Guía de Transición: De los 14 a los 18 Años',
 ]
 
+const today = new Intl.DateTimeFormat('es-ES', {
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
+}).format(new Date())
+
 export default function Page() {
   return (
     <div className="min-h-screen bg-gradient-hero">
       <div className="bg-gradient-primary py-2.5 text-center text-xs font-semibold uppercase tracking-wider text-primary-foreground sm:text-sm">
         <div className="container flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
-          <span>Oferta disponible solo hoy 15/08/2026</span>
+          <span>Oferta disponible solo hoy {today}</span>
         </div>
       </div>
 
