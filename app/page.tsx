@@ -22,7 +22,10 @@ import { CtaButton } from '@/components/landing/cta-button'
 import { FaqSection } from '@/components/landing/faq-section'
 
 const themes = [
-  { src: '/assets/deus.webp', alt: 'Dios' },
+  {
+    src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2016%20de%20ago.%20de%202026%2C%2001_13_53-DFHGuqRb4fNunnQH2Dhtu6dPVJXfCX.png',
+    alt: 'Infografía ilustrada sobre Dios',
+  },
   { src: '/assets/igreja.webp', alt: 'Iglesia' },
   { src: '/assets/salvacao.webp', alt: 'Salvación' },
   { src: '/assets/criacao.webp', alt: 'Creación' },
