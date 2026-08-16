@@ -22,7 +22,10 @@ import { CtaButton } from '@/components/landing/cta-button'
 import { FaqSection } from '@/components/landing/faq-section'
 
 const themes = [
-  { src: '/assets/deus.webp', alt: 'Dios' },
+  {
+    src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2016%20de%20ago.%20de%202026%2C%2001_13_53-DFHGuqRb4fNunnQH2Dhtu6dPVJXfCX.png',
+    alt: 'Infografía ilustrada sobre Dios',
+  },
   { src: '/assets/igreja.webp', alt: 'Iglesia' },
   { src: '/assets/salvacao.webp', alt: 'Salvación' },
   { src: '/assets/criacao.webp', alt: 'Creación' },
@@ -131,12 +134,18 @@ const completePlanFeatures = [
   'Bono #3 Guía de Transición: De los 14 a los 18 Años',
 ]
 
+const today = new Intl.DateTimeFormat('es-ES', {
+  day: '2-digit',
+  month: '2-digit',
+  year: 'numeric',
+}).format(new Date())
+
 export default function Page() {
   return (
     <div className="min-h-screen bg-gradient-hero">
       <div className="bg-gradient-primary py-2.5 text-center text-xs font-semibold uppercase tracking-wider text-primary-foreground sm:text-sm">
         <div className="container flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
-          <span>Oferta disponible solo hoy 15/08/2026</span>
+          <span>Oferta disponible solo hoy {today}</span>
         </div>
       </div>
 
