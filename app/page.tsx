@@ -519,9 +519,6 @@ export default function Page() {
                 ))}
               </div>
               <p className="text-sm leading-relaxed text-foreground/90">&quot;{t.q}&quot;</p>
-              <div className="mt-5 border-t border-border pt-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Testimonio verificado</p>
-              </div>
             </div>
           ))}
         </div>
