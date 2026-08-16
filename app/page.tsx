@@ -1,5 +1,8 @@
 'use client'
 
+'use client'
+
+import { useState } from 'react'
 import Image from 'next/image'
 import {
   BookOpen,
@@ -14,6 +17,7 @@ import {
   ShieldCheck,
   Smartphone,
   Star,
+  X,
 } from 'lucide-react'
 import { AvatarStack } from '@/components/landing/avatar-stack'
 import { ChecklistItem } from '@/components/landing/checklist-item'
@@ -104,18 +108,21 @@ const bonuses = [
 
 const testimonials = [
   {
-    n: 'Ana Paula R.',
-    r: 'Madre de un niño de 9 años',
+    n: 'María Fernanda G.',
+    r: 'Madre mexicana de un niño de 9 años',
+    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ana%20Paula%20R.-pcjNOrS09UoWUjYob8oeknFQE55oVd.webp',
     q: 'Mi hijo siempre hacía preguntas difíciles y yo no sabía qué responder. Este material no me dio respuestas hechas, me enseñó a conversar mejor con mi hijo. Hoy él puede explicar por qué cree.',
   },
   {
-    n: 'Ricardo M.',
-    r: 'Padre de un niño de 11 años',
+    n: 'Carlos Andrés M.',
+    r: 'Padre colombiano de un niño de 11 años',
+    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ricardo%20M.-Pt2uNr5s3NThsi47jYnO1SqIiJFnBj.webp',
     q: 'Me di cuenta de que le estaba enseñando a mi hijo a repetir frases, no a pensar. Este recorrido me ayudó a corregir eso. Vi a mi hijo volverse más seguro al hablar de la fe sin ponerse a la defensiva.',
   },
   {
-    n: 'Juliana S.',
-    r: 'Madre soltera',
+    n: 'Valentina R.',
+    r: 'Madre argentina y emprendedora',
+    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Juliana%20S.-iLLpslFDJQx5WZzIAV98I1RVsfJ6rS.webp',
     q: 'Siempre tuve miedo de las dudas de mi hija. Pensaba que se estaba alejando. Hoy entiendo que las preguntas son parte del crecimiento. El material trajo más calma y profundidad.',
   },
 ]
@@ -141,6 +148,8 @@ const today = new Intl.DateTimeFormat('es-ES', {
 }).format(new Date())
 
 export default function Page() {
+  const [isBasicUpsellOpen, setIsBasicUpsellOpen] = useState(false)
+
   return (
     <div className="min-h-screen bg-gradient-hero">
       <div className="bg-gradient-primary py-2.5 text-center text-xs font-semibold uppercase tracking-wider text-primary-foreground sm:text-sm">
@@ -403,15 +412,15 @@ export default function Page() {
               ))}
             </ul>
             <div className="mt-8">
-              <p className="text-sm text-muted-foreground line-through">de R$74,00 por:</p>
-              <p className="text-5xl font-extrabold text-foreground">R$47,90</p>
-              <p className="text-sm text-muted-foreground">o 12x de R$4,89 en la tarjeta</p>
+              <p className="text-sm text-muted-foreground line-through">de US$ 39,90 por:</p>
+              <p className="text-5xl font-extrabold text-foreground">US$ 9,90</p>
+              <p className="text-sm text-muted-foreground">pago único</p>
               <p className="mt-2 inline-block rounded-full bg-success/10 px-3 py-1 text-xs font-bold text-success">
-                Ahorras R$26,10
+                Ahorras US$ 10,00
               </p>
             </div>
             <div className="mt-auto pt-8">
-              <CtaButton isOffer href="https://pay.wiapy.com/7NbR4fl2Q1">
+              <CtaButton isOffer onClick={() => setIsBasicUpsellOpen(true)}>
                 Quiero el plan básico
               </CtaButton>
             </div>
@@ -445,11 +454,11 @@ export default function Page() {
               ))}
             </ul>
             <div className="mt-8">
-              <p className="text-sm text-muted-foreground line-through">de R$147,00 por:</p>
-              <p className="text-5xl font-extrabold text-foreground">R$67,90</p>
-              <p className="text-sm text-muted-foreground">o 12x de R$6,93 en la tarjeta</p>
+              <p className="text-sm text-muted-foreground line-through">de US$ 39,90 por:</p>
+              <p className="text-5xl font-extrabold text-foreground">US$ 19,90</p>
+              <p className="text-sm text-muted-foreground">pago único</p>
               <p className="mt-2 inline-block rounded-full bg-success/10 px-3 py-1 text-xs font-bold text-success">
-                Ahorras R$79,10
+                Ahorras US$ 10,00
               </p>
             </div>
             <div className="mt-auto pt-8">
@@ -491,6 +500,19 @@ export default function Page() {
         <div className="mx-auto mt-10 grid max-w-6xl gap-5 lg:grid-cols-3">
           {testimonials.map((t) => (
             <div key={t.n} className="flex flex-col rounded-2xl bg-card p-6 shadow-card">
+              <div className="mb-4 flex items-center gap-3">
+                <Image
+                  src={t.img}
+                  alt={`Foto de ${t.n}`}
+                  width={56}
+                  height={56}
+                  className="size-14 rounded-full object-cover ring-2 ring-accent/30"
+                />
+                <div>
+                  <p className="text-sm font-bold text-foreground">{t.n}</p>
+                  <p className="text-xs text-muted-foreground">{t.r}</p>
+                </div>
+              </div>
               <div className="mb-3 flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-accent text-accent" />
@@ -498,8 +520,7 @@ export default function Page() {
               </div>
               <p className="text-sm leading-relaxed text-foreground/90">&quot;{t.q}&quot;</p>
               <div className="mt-5 border-t border-border pt-4">
-                <p className="text-sm font-bold text-foreground">{t.n}</p>
-                <p className="text-xs text-muted-foreground">{t.r}</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Testimonio verificado</p>
               </div>
             </div>
           ))}
@@ -540,6 +561,58 @@ export default function Page() {
           </p>
         </div>
       </footer>
+
+      {isBasicUpsellOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/70 p-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="basic-upsell-title"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setIsBasicUpsellOpen(false)
+          }}
+        >
+          <div className="relative max-h-[calc(100vh-2rem)] w-full max-w-md overflow-y-auto rounded-3xl bg-card p-6 text-center shadow-2xl sm:p-8">
+            <button
+              type="button"
+              onClick={() => setIsBasicUpsellOpen(false)}
+              className="absolute right-4 top-4 rounded-full p-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              aria-label="Cerrar oferta"
+            >
+              <X className="size-5" />
+            </button>
+            <p className="pr-6 text-xs font-bold uppercase tracking-[0.2em] text-destructive">Oferta especial</p>
+            <h2 id="basic-upsell-title" className="mt-3 text-2xl font-extrabold text-foreground sm:text-3xl">
+              ¡Espera! Antes de continuar...
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              Por solo <strong className="text-foreground">US$ 5 más</strong>, puedes llevarte el Plan Completo con todos los contenidos y beneficios adicionales.
+            </p>
+            <div className="mt-6 flex items-center justify-center gap-3">
+              <span className="text-xl text-muted-foreground line-through">US$ 19,90</span>
+              <span className="text-4xl font-extrabold text-success">US$ 14,90</span>
+            </div>
+            <a
+              href="https://pay.wiapy.com/Wim-S2Tyh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-7 inline-flex w-full items-center justify-center rounded-2xl bg-success px-6 py-4 text-base font-bold uppercase tracking-wide text-success-foreground shadow-cta transition-transform hover:-translate-y-0.5"
+            >
+              Sí, quiero el Plan Completo
+            </a>
+            <button
+              type="button"
+              onClick={() => {
+                setIsBasicUpsellOpen(false)
+                window.open('https://pay.wiapy.com/7NbR4fl2Q1', '_blank', 'noopener,noreferrer')
+              }}
+              className="mt-4 w-full rounded-2xl px-4 py-3 text-sm font-semibold text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+            >
+              No, prefiero continuar con el Básico
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

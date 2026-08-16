@@ -4,9 +4,10 @@ type CtaButtonProps = {
   children: React.ReactNode
   href?: string
   isOffer?: boolean
+  onClick?: () => void
 }
 
-export function CtaButton({ children, href, isOffer }: CtaButtonProps) {
+export function CtaButton({ children, href, isOffer, onClick }: CtaButtonProps) {
   const className =
     'group relative inline-flex w-full items-center justify-center rounded-2xl bg-success px-8 py-5 text-base font-bold uppercase tracking-wide text-success-foreground shadow-cta transition-all duration-300 hover:-translate-y-0.5 hover:bg-success/90 active:translate-y-0 sm:text-lg'
 
@@ -30,7 +31,7 @@ export function CtaButton({ children, href, isOffer }: CtaButtonProps) {
   }
 
   return (
-    <button type="button" onClick={isOffer ? undefined : scrollToOffer} className={className}>
+    <button type="button" onClick={onClick ?? (isOffer ? undefined : scrollToOffer)} className={className}>
       {content}
     </button>
   )
