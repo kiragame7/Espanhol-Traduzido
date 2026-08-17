@@ -412,7 +412,7 @@ export default function Page() {
               ))}
             </ul>
             <div className="mt-8">
-              <p className="text-sm text-muted-foreground line-through">de US$ 39,90 por:</p>
+              <p className="text-sm text-muted-foreground line-through">de US$ 21,90 por:</p>
               <p className="text-5xl font-extrabold text-foreground">US$ 9,90</p>
               <p className="text-sm text-muted-foreground">pago único</p>
               <p className="mt-2 inline-block rounded-full bg-success/10 px-3 py-1 text-xs font-bold text-success">
